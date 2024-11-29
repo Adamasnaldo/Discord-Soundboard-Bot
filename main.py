@@ -25,6 +25,7 @@ class MyClient(discord.Client):
         self.tree = app_commands.CommandTree(self)
     
     # Syncing to a single guild is taking forever, so this must be wrong...
+    # If you want to make it global, remove the 'guild' argument on the function calls
     async def setup_hook(self) -> None:
         logger.info("Copying global commands to guild...")
         self.tree.copy_global_to(guild=GUILD)
